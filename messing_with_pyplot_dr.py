@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+from collections import Counter
 
 """
 CREATING A LINE GRAPH
@@ -39,4 +40,26 @@ plt.title("My Favorite Movies")
 # label x-axis with movie names at bar centers
 plt.xticks([i + .5 for i, _ in enumerate(movies)], movies)
 
+plt.show()
+
+"""
+CREATING A HISTOGRAM
+"""
+grades  = [83, 95, 91, 87, 70, 0 , 85, 82, 100, 67, 73, 77, 0]
+
+# Lambda function that rounds a grade to the nearest tens
+round_tens = lambda grade: grade // 10 * 10
+
+# Creates a dict where each grade is the key and
+# it's value is the Frequency of the grade
+histogram = Counter(round_tens(grade) for grade in grades)
+
+plt.bar([i - 4 for i in histogram.keys()],    # Offsets the x by 4
+        histogram.values(),                    # Frequency of each grade
+        8)                                      # Width of each bar
+
+plt.xticks([10 * i for i in range(11)])
+plt.xlabel("Decile")
+plt.ylabel("# of Students")
+plt.title("Distribution of Exam 1 Grades")
 plt.show()
