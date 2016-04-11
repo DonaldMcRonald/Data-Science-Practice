@@ -28,24 +28,37 @@ from collections import Counter
 
 # plt.show()
 
-grades = [83,95,91,87,70,0,85,82,100,67,73,77,0]
+# grades = [83,95,91,87,70,0,85,82,100,67,73,77,0]
 
-decile = lambda grade : grade // 10 * 10 # normalizes grades to nearest 10
+# decile = lambda grade : grade // 10 * 10 # normalizes grades to nearest 10
 
-histogram = Counter(decile(grade) for grade in grades)
+# histogram = Counter(decile(grade) for grade in grades)
 
-plt.bar([x - 4 for x in histogram.keys()],
-	histogram.values(),
-	8)
+# plt.bar([x - 4 for x in histogram.keys()],
+# 	histogram.values(),
+# 	8) # histogram is a dictionary instantiated from an array of duplicate elements using Counter.
 
-plt.axis([-5, 105, 0, 5]) # x axis from -5 to 105 because of bar width 8, half width 4 giving padding
+# plt.axis([-5, 105, 0, 5]) # x axis from -5 to 105 because of bar width 8, half width 4 giving padding
+# # judiciously use .axis() because it's bad to set y origin to nonzero.
+# # this is misleading and can lead to small margins seeming huge.
 
-plt.xticks([10 * i for i in range(11)]) # x : 0, 10, ... 100
-plt.xlabel("Decile")
-plt.ylabel('# students')
-plt.title('Dist of Exam grades')
+# plt.xticks([10 * i for i in range(11)]) # x : 0, 10, ... 100
+# plt.xlabel("Decile")
+# plt.ylabel('# students')
+# plt.title('Dist of Exam grades')
+# plt.show()
+
+err1 = [1, 2, 5, 8, 4, 5, 9, 13]
+err2 = [4, -2, 3, 4, 5, -1, 4, 11]
+totalerr = [x + y for x, y in zip(err1, err2)]
+xs = [i for i, _ in enumerate(err1)]
+
+plt.plot(xs, err1, 'g:', label='err1')
+plt.plot(xs, err2, 'r-.', label="err2")
+plt.plot(xs, totalerr, 'b-', label='totalerr')
+
+# creating the legend
+plt.legend(loc=9) # code for 'top-center'
+plt.xlabel('model complexity')
+plt.title('err1 vs err2 vs totalerr')
 plt.show()
-
-
-
-
