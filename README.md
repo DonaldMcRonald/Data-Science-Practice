@@ -1,0 +1,1 @@
+_(tinkering with examples from [Joel Grus' wonderful **Data Science from Scratch** book](http://www.amazon.com/Data-Science-Scratch-Principles-Python/dp/149190142X) in Python.)_
